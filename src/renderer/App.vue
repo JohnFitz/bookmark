@@ -4,9 +4,12 @@
       <v-list dense>
         <v-list-item>
           <v-list-tile>
+            <v-list-tile-action>
+                <v-icon>bookmark</v-icon>
+            </v-list-tile-action>
             <v-list-tile-content>
                 <v-list-tile-title>
-                  All Links
+                  All bookmarks
                 </v-list-tile-title>
               </v-list-tile-content>
           </v-list-tile>
@@ -14,6 +17,9 @@
         <v-divider dark></v-divider>
         <v-list-item>
           <v-list-tile>
+          <v-list-tile-action>
+                <v-icon>grade</v-icon>
+              </v-list-tile-action>
             <v-list-tile-content>
                 <v-list-tile-title>
                   Favourites
@@ -73,12 +79,7 @@
 <script>
 import firebase from 'firebase'
 var config = {
-  apiKey: 'AIzaSyCd64TbS1qJRJTtIXU9mAdHU4xMl2A6uYo',
-  authDomain: 'bookmark-adb57.firebaseapp.com',
-  projectId: 'bookmark-adb57',
-  databaseURL: 'https://bookmark-adb57.firebaseio.com',
-  storageBucket: 'bookmark-adb57.appspot.com',
-  messagingSenderId: '355851923146'
+  databaseURL: process.env.FIREBASE_DATABASE_URL
 }
 const fire = firebase.initializeApp(config)
 const db = fire.database()
@@ -113,7 +114,6 @@ export default {
 </script>
 
 <style lang="stylus">
-  @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700\|Material\+Icons)
   @import '../../node_modules/vuetify/src/stylus/settings/_colors'
   $theme := {
     primary: $grey.darken-4
@@ -125,6 +125,4 @@ export default {
     success: $green.lighten-2
   }
   @import '../../node_modules/vuetify/src/stylus/main'
-  body
-    background: $grey.lighten-4
 </style>
