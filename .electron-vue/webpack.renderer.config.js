@@ -12,12 +12,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 /**
- * List of node_modules to include in webpack bundle
- *
- * Required for specific packages like Vue UI libraries
- * that provide pure *.vue files that need compiling
- * https://simulatedgreg.gitbooks.io/electron-vue/content/en/webpack-configurations.html#white-listing-externals
- */
+* List of node_modules to include in webpack bundle
+*
+* Required for specific packages like Vue UI libraries
+* that provide pure *.vue files that need compiling
+* https://simulatedgreg.gitbooks.io/electron-vue/content/en/webpack-configurations.html#white-listing-externals
+*/
 let whiteListedModules = ['vue']
 
 let rendererConfig = {
@@ -49,6 +49,10 @@ let rendererConfig = {
         })
       },
       {
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader!stylus-loader'
+      },
+      {
         test: /\.html$/,
         use: 'vue-html-loader'
       },
@@ -69,7 +73,8 @@ let rendererConfig = {
             extractCSS: process.env.NODE_ENV === 'production',
             loaders: {
               sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
-              scss: 'vue-style-loader!css-loader!sass-loader'
+              scss: 'vue-style-loader!css-loader!sass-loader',
+              stylus: 'vue-style-loader!css-loader!stylus-loader'
             }
           }
         }
@@ -107,8 +112,8 @@ let rendererConfig = {
         removeComments: true
       },
       nodeModules: process.env.NODE_ENV !== 'production'
-        ? path.resolve(__dirname, '../node_modules')
-        : false
+      ? path.resolve(__dirname, '../node_modules')
+      : false
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
@@ -129,8 +134,8 @@ let rendererConfig = {
 }
 
 /**
- * Adjust rendererConfig for development settings
- */
+* Adjust rendererConfig for development settings
+*/
 if (process.env.NODE_ENV !== 'production') {
   rendererConfig.plugins.push(
     new webpack.DefinePlugin({
@@ -140,8 +145,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 /**
- * Adjust rendererConfig for production settings
- */
+* Adjust rendererConfig for production settings
+*/
 if (process.env.NODE_ENV === 'production') {
   rendererConfig.devtool = ''
 
