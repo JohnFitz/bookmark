@@ -22,12 +22,7 @@ export default {
   @import '../../node_modules/vuetify/src/stylus/settings/_colors'
   $theme := {
     primary: $grey.darken-4
-    accent: $red.accent-2
-    secondary: $grey.lighten-1
-    info: $blue.lighten-1
-    warning: $amber.darken-2
-    error: $red.accent-4
-    success: $green.lighten-2
+    secondary: $pink.darken-1
   }
   @import '../../node_modules/vuetify/src/stylus/main'
 </style>
