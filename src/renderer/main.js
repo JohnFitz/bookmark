@@ -6,6 +6,8 @@ import App from './App'
 import router from './router'
 import store from './store'
 
+require('dotenv').config()
+
 Vue.use(Vuetify)
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
