@@ -1,6 +1,8 @@
 # Book mark
 
-> Bookmark is simple desktop application made using [Vue.js](https://vuejs.org), [Atom ELectron](https://electron.atom.io/) and [Firebase](https://firebase.google.com)
+> Bookmark is simple desktop application made using [Vue.js](https://vuejs.org), [Atom ELectron](https://electron.atom.io/) and [Firebase](https://firebase.google.com). Chrome extension to make bookmark easier directly from browser coming soon.
+
+
 
 #### Build Setup
 
@@ -23,6 +25,14 @@ npm run build
 npm run lint
 
 ```
+
+### Features
+
+- [x] Offline
+- [x] Categories
+- [ ] Marking as Favourite
+- [ ] Rich Text Media for each link bookmarked
+- [ ] Export/Import
 
 ---
 
