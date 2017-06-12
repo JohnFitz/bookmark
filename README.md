@@ -1,10 +1,14 @@
-# bookmark
+# Book mark
 
-> Bookmark app using firebase, vuejs and atom electron
+> Bookmark is simple desktop application made using [Vue.js](https://vuejs.org), [Atom ELectron](https://electron.atom.io/) and [Firebase](https://firebase.google.com)
 
 #### Build Setup
 
 ``` bash
+
+# Set Environment Variable in either ~/.bashrc file or ~/.zshrc file
+export FIREBASE_DATABASE_URL=<your firebase databse url>
+
 # install dependencies
 npm install
 
