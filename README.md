@@ -34,6 +34,11 @@ npm run lint
 - [ ] Rich Text Media for each link bookmarked
 - [ ] Export/Import
 
+
+### License
+
+[MIT License](https://github.com/mrgodhani/bookmark/blob/master/LICENSE)
+
 ---
 
 This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
