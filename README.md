@@ -1,4 +1,4 @@
-# Book mark
+# Bookmark
 
 > Bookmark is simple desktop application made using [Vue.js](https://vuejs.org), [Atom ELectron](https://electron.atom.io/) and [Firebase](https://firebase.google.com). Chrome extension to make bookmark easier directly from browser coming soon.
 
