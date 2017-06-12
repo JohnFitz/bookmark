@@ -57,14 +57,14 @@
                   </v-card-text>
                 </v-card-row>
                 <v-card-row actions>
-                  <v-btn class="green--text darken-1" flat="flat" @click.native="dialog = false">Cancel</v-btn>
-                  <v-btn class="green--text darken-1" flat="flat" @click.native="addCat(category)">Add</v-btn>
+                  <v-btn class="secondary--text darken-1" flat="flat" @click.native="dialog = false">Cancel</v-btn>
+                  <v-btn class="secondary--text darken-1" flat="flat" @click.native="addCat(category)">Add</v-btn>
                 </v-card-row>
               </v-card>
             </v-dialog>
           </v-flex>
         </v-layout>
-        <v-list-item v-for="category in $store.state.category.categories" v-bind:key="category.name">
+        <v-list-item v-for="category in $store.state.bookmark.categories" v-bind:key="category.name">
           <v-list-tile>
             <v-list-tile-action>
                   <v-icon :style="{ color: category.color }">fiber_manual_record</v-icon>
@@ -102,8 +102,11 @@
       </v-menu>
       </v-toolbar-items>
     </v-toolbar>
-    <main>
+    <main class="bg">
       <v-container fluid>
+        <v-btn floating class="secondary floatingbtn">
+          <v-icon light>add</v-icon>
+        </v-btn>
       </v-container>
     </main>
   </v-app>
@@ -139,6 +142,8 @@ export default {
   },
   created () {
     this.$store.dispatch('loadCategories', this.$firebaseRefs.categories)
+    this.$store.dispatch('loadFavourites', this.$firebaseRefs.favourites)
+    this.$store.dispatch('loadBookmarks', this.$firebaseRefs.bookmarks)
   },
   methods: {
     addCat (cat) {
@@ -162,4 +167,12 @@ export default {
     success: $green.lighten-2
   }
   @import '../../node_modules/vuetify/src/stylus/main'
+
+  .bg
+    background: $grey.lighten-4
+
+  .floatingbtn
+    position: fixed
+    bottom: 20px
+    right: 15px
 </style>
