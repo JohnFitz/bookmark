@@ -35,17 +35,25 @@
             </v-subheader>
           </v-flex>
           <v-flex xs6 class="text-xs-right">
-            <v-dialog v-model="dialog">
+            <v-dialog v-model="dialog" width="500">
               <v-btn slot="activator" icon>
                 <v-icon>add</v-icon>
               </v-btn>
               <v-card>
                 <v-card-row>
-                  <v-card-title>Add Category</v-card-title>
+                  <v-card-title>Add a new category</v-card-title>
                 </v-card-row>
                 <v-card-row>
                   <v-card-text>
                     <v-text-field label="Category Name" v-model="category.name"></v-text-field>
+                    <v-select
+                        v-bind:items="categoryColors"
+                        v-model="category.color"
+                        label="Select Color"
+                        dark
+                        single-line
+                        auto
+                      ></v-select>
                   </v-card-text>
                 </v-card-row>
                 <v-card-row actions>
@@ -58,6 +66,9 @@
         </v-layout>
         <v-list-item v-for="category in $store.state.category.categories" v-bind:key="category.name">
           <v-list-tile>
+            <v-list-tile-action>
+                  <v-icon :style="{ color: category.color }">fiber_manual_record</v-icon>
+                </v-list-tile-action>
             <v-list-tile-content>
                 <v-list-tile-title>
                   {{ category.name }}
@@ -67,10 +78,32 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar class=""></v-toolbar>
+    <v-toolbar light>
+      <v-toolbar-title>All Bookmarks</v-toolbar-title>
+      <v-text-field prepend-icon="search" label="Search..." hide-details single-line light></v-text-field>
+      <v-toolbar-items>
+        <v-menu left top origin="bottom left" transition="v-scale-transition">
+        <v-btn light icon slot="activator">
+          <v-icon>more_vert</v-icon>
+        </v-btn>
+        <v-list>
+          <v-list-item>
+            <v-list-tile>
+              <v-list-tile-title>Change Account</v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-title>Invite Friends</v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-title>Log Out</v-list-tile-title>
+            </v-list-tile>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      </v-toolbar-items>
+    </v-toolbar>
     <main>
       <v-container fluid>
-        <router-view></router-view>
       </v-container>
     </main>
   </v-app>
@@ -89,6 +122,10 @@ export default {
   data () {
     return {
       dialog: false,
+      categoryColors: [
+        'Red', 'Orange', 'Yellow', 'Green',
+        'Teal', 'Blue', 'Violet', 'Purple', 'Pink', 'Brown', 'Grey'
+      ],
       category: {
         name: null,
         color: null
@@ -107,7 +144,7 @@ export default {
     addCat (cat) {
       this.$firebaseRefs.categories.push(cat)
       this.dialog = false
-      this.category.name = null
+      this.category = { name: null, color: null }
     }
   }
 }
