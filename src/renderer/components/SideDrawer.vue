@@ -93,9 +93,12 @@ export default {
       }
     }
   },
+  created () {
+    this.$store.dispatch('loadCategories', this.$db.ref('categories'))
+  },
   methods: {
     addCat (cat) {
-      this.$firebaseRefs.categories.push(cat)
+      this.$db.ref('categories').push(cat)
       this.dialog = false
       this.category = { name: null, color: null }
     }

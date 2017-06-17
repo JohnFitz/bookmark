@@ -60,13 +60,6 @@
 </template>
 
 <script>
-import firebase from 'firebase'
-var config = {
-  databaseURL: process.env.FIREBASE_DATABASE_URL
-}
-const fire = firebase.initializeApp(config)
-const db = fire.database()
-
 export default {
   name: 'bookmark',
   data () {
@@ -85,22 +78,9 @@ export default {
       }
     }
   },
-  firebase: {
-    categories: db.ref('categories'),
-    bookmarks: db.ref('bookmarks'),
-    favourites: db.ref('favourites')
-  },
   created () {
-    this.$store.dispatch('loadCategories', this.$firebaseRefs.categories)
-    this.$store.dispatch('loadFavourites', this.$firebaseRefs.favourites)
-    this.$store.dispatch('loadBookmarks', this.$firebaseRefs.bookmarks)
-  },
-  methods: {
-    addCat (cat) {
-      this.$firebaseRefs.categories.push(cat)
-      this.dialog = false
-      this.category = { name: null, color: null }
-    }
+    this.$store.dispatch('loadFavourites', this.$db.ref('favourites'))
+    this.$store.dispatch('loadBookmarks', this.$db.ref('bookmarks'))
   }
 }
 </script>
