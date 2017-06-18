@@ -24,8 +24,10 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "cheerio": "^1.0.0-rc.1",
     "dotenv": "^4.0.0",
     "firebase": "^4.1.2",
+    "got": "^7.0.0",
     "vue": "^2.3.3",
     "vue-electron": "^1.0.6",
     "vue-router": "^2.5.3",
