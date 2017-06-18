@@ -110,7 +110,14 @@ export default {
       this.category = { name: null, color: null }
     },
     deleteCategory (name) {
-      this.$db.ref('categories').child(_.get(name, '.key')).remove()
+      const catKey = _.get(name, '.key') // Get category key
+      const catName = _.get(name, 'name') // Get category name
+      const bookmarks = _.filter(this.$store.state.bookmark.bookmarks, ['category', catName])
+      // Skim through all Bookmarks and remove all links within category
+      _.forEach(bookmarks, (value) => {
+        this.$db.ref('bookmarks').child(_.get(value, '.key')).remove()
+      })
+      this.$db.ref('categories').child(catKey).remove() // Remove Category
     }
   }
 }

@@ -19,6 +19,7 @@ export default {
           title: title,
           favicon: urlUtil.resolve(url, favicon),
           category: cat,
+          favourite: false,
           link: url
         })
       })

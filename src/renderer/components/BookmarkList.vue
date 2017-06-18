@@ -41,6 +41,16 @@
     </v-flex>
   </v-layout>
 </template>
+<script>
+export default {
+  methods: {
+    deleteBookmark (bookmark) {
+    },
+    markFavourite (bookmark) {
+    }
+  }
+}
+</script>
 <style lang="stylus">
 .avatar img
   width: 24px
