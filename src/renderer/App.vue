@@ -39,8 +39,7 @@
           </v-card-row>
           <v-card-row>
             <v-card-text>
-              <v-text-field label="Bookmark Title" v-model="bookmarklink.title"></v-text-field>
-              <v-text-field label="Bookmark URL" v-model="bookmarklink.link"></v-text-field>
+              <v-text-field label="Bookmark URL" v-model="bookmarklink.link" type="url" required></v-text-field>
               <v-select
                   v-bind:items="$store.state.bookmark.categories"
                   item-text="name"
@@ -49,6 +48,7 @@
                   dark
                   single-line
                   auto
+                  required
                 >
               </v-select>
             </v-card-text>
@@ -77,7 +77,6 @@ export default {
         color: null
       },
       bookmarklink: {
-        title: null,
         category: null,
         favicon: null,
         link: null

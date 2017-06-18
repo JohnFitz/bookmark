@@ -3,6 +3,12 @@ import got from 'got'
 import urlUtil from 'url'
 
 export default {
+  /**
+   * Extract basic information from link
+   * @param  {string} url Link Url that needs to be fetched
+   * @param  {string} cat Category that needs to be attached
+   * @return {object}     Returns object
+   */
   extractLink (url, cat) {
     return new Promise((resolve, reject) => {
       got(url, { useElectronNet: false }).then(response => {
