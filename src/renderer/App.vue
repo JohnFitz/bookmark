@@ -41,6 +41,7 @@
             <v-card-text>
               <v-text-field label="Bookmark URL" v-model="bookmarklink.link" type="url" required></v-text-field>
               <v-select
+                  v-if="$store.state.bookmark.categories.length > 0"
                   v-bind:items="$store.state.bookmark.categories"
                   item-text="name"
                   v-model="bookmarklink.category"

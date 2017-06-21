@@ -1,5 +1,5 @@
 <template>
-  <v-layout row>
+  <v-layout row v-if="$store.state.bookmark.bookmarks.length > 0" wrap>
     <v-flex xs12>
       <v-list two-line dense>
         <template v-for="bookmark in $store.state.bookmark.bookmarks">
@@ -21,12 +21,12 @@
                   </v-btn>
                   <v-list>
                     <v-list-item>
-                      <v-list-tile>
+                      <v-list-tile @click.native="markFavourite(bookmark)">
                         <v-list-tile-title>Mark as favourite</v-list-tile-title>
                       </v-list-tile>
                     </v-list-item>
                     <v-list-item>
-                      <v-list-tile>
+                      <v-list-tile @click.native="deleteBookmark(bookmark)">
                         <v-list-tile-title>Delete</v-list-tile-title>
                       </v-list-tile>
                     </v-list-item>
@@ -40,13 +40,22 @@
       </v-list>
     </v-flex>
   </v-layout>
+  <v-layout row justify-center v-else>
+    <v-flex xs12>
+      <p class="text-xs-center">No bookmarks found.</p>
+    </v-flex>
+  </v-layout>
 </template>
 <script>
+import _ from 'lodash'
+
 export default {
   methods: {
     deleteBookmark (bookmark) {
+      this.$db.ref('bookmarks').child(_.get(bookmark, '.key')).remove()
     },
     markFavourite (bookmark) {
+      this.$db.ref('favourites').push(bookmark)
     }
   }
 }
