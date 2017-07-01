@@ -52,7 +52,7 @@ export default {
   name: 'bookmark',
   data () {
     return {
-      title: 'All bookmarks',
+      title: 'All Bookmarks',
       search: null,
       type: 'all',
       bookmark: false,
@@ -77,7 +77,7 @@ export default {
     this.$on('type', function (val) {
       this.type = val
       if (val === 'all') {
-        this.title = 'All bookmarks'
+        this.title = 'All Bookmarks'
       } else {
         this.title = _.capitalize(val)
       }

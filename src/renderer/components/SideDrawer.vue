@@ -8,7 +8,7 @@
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>
-              All bookmarks
+              All Bookmarks
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
