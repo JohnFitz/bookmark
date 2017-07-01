@@ -17,7 +17,7 @@ export default {
         const favicon = $('link[rel="icon"], link[rel="shortcut icon"], link[rel="Shortcut Icon"]').last().attr('href')
         resolve({
           title: title,
-          favicon: urlUtil.resolve(url, favicon),
+          favicon: urlUtil.resolve(response.url, favicon),
           category: cat,
           favourite: false,
           link: url

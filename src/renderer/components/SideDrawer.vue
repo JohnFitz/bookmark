@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer permanent light>
     <v-list dense>
-      <v-list-item>
+      <v-list-item @click="setFeed('all')">
         <v-list-tile>
           <v-list-tile-action>
             <v-icon>bookmark</v-icon>
@@ -14,7 +14,7 @@
         </v-list-tile>
       </v-list-item>
       <v-divider dark></v-divider>
-      <v-list-item>
+      <v-list-item @click="setFeed('favourites')">
         <v-list-tile>
           <v-list-tile-action>
             <v-icon>grade</v-icon>
@@ -104,6 +104,9 @@ export default {
     this.$store.dispatch('loadCategories', this.$db.ref('categories'))
   },
   methods: {
+    setFeed (type) {
+      this.$parent.$emit('type', type)
+    },
     addCat (cat) {
       this.$db.ref('categories').push(cat)
       this.dialog = false

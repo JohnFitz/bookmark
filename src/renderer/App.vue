@@ -3,31 +3,11 @@
     <sidebar></sidebar>
     <v-toolbar light fixed>
       <v-toolbar-title>All Bookmarks</v-toolbar-title>
-      <v-text-field prepend-icon="search" label="Search..." hide-details single-line light></v-text-field>
-      <v-toolbar-items>
-        <v-menu left top origin="bottom left" transition="v-scale-transition">
-        <v-btn light icon slot="activator">
-          <v-icon>more_vert</v-icon>
-        </v-btn>
-        <v-list>
-          <v-list-item>
-            <v-list-tile>
-              <v-list-tile-title>Change Account</v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-title>Invite Friends</v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-title>Log Out</v-list-tile-title>
-            </v-list-tile>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-      </v-toolbar-items>
+      <v-text-field prepend-icon="search" label="Search..." hide-details single-line light v-model="search"></v-text-field>
     </v-toolbar>
     <main class="bg">
       <v-container fluid>
-        <bookmark-list></bookmark-list>
+        <bookmark-list :type="type"></bookmark-list>
       </v-container>
       <v-dialog v-model="bookmark" width="500">
         <v-btn floating class="secondary floatingbtn" slot="activator">
@@ -71,6 +51,8 @@ export default {
   name: 'bookmark',
   data () {
     return {
+      search: null,
+      type: 'all',
       bookmark: false,
       link: null,
       category: {
@@ -85,6 +67,9 @@ export default {
     }
   },
   created () {
+    this.$on('type', function (val) {
+      this.type = val
+    })
     this.$store.dispatch('loadBookmarks', this.$db.ref('bookmarks'))
   },
   methods: {

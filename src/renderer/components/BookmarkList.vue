@@ -2,7 +2,7 @@
   <v-layout row v-if="$store.state.bookmark.bookmarks.length > 0" wrap>
     <v-flex xs12>
       <v-list two-line dense>
-        <template v-for="bookmark in $store.state.bookmark.bookmarks">
+        <template v-for="bookmark in filteredBookmarks">
           <v-list-item  style="background:white;">
             <v-list-tile avatar>
               <v-list-tile-avatar>
@@ -53,7 +53,30 @@
 <script>
 import _ from 'lodash'
 
+const filters = {
+  all: bookmarks => bookmarks,
+  favourites: bookmarks => bookmarks.filter(bookmark => bookmark.favourite)
+}
+
 export default {
+  props: {
+    type: {
+      type: String,
+      default: 'all'
+    },
+    query: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    bookmarks () {
+      return this.$store.state.bookmark.bookmarks
+    },
+    filteredBookmarks () {
+      return filters[this.type](this.bookmarks)
+    }
+  },
   methods: {
     deleteBookmark (bookmark) {
       this.$db.ref('bookmarks').child(_.get(bookmark, '.key')).remove()
