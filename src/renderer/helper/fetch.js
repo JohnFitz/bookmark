@@ -18,7 +18,10 @@ export default {
         resolve({
           title: title,
           favicon: urlUtil.resolve(response.url, favicon),
-          category: cat,
+          category: {
+            name: cat.name,
+            color: cat.color
+          },
           favourite: false,
           link: url
         })

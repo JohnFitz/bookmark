@@ -2,7 +2,7 @@
   <v-app>
     <sidebar></sidebar>
     <v-toolbar light fixed>
-      <v-toolbar-title>All Bookmarks</v-toolbar-title>
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-text-field prepend-icon="search" label="Search..." hide-details single-line light v-model="search"></v-text-field>
     </v-toolbar>
     <main class="bg">
@@ -46,11 +46,13 @@
 
 <script>
 import extract from './helper/fetch'
+import _ from 'lodash'
 
 export default {
   name: 'bookmark',
   data () {
     return {
+      title: 'All bookmarks',
       search: null,
       type: 'all',
       bookmark: false,
@@ -70,15 +72,17 @@ export default {
     this.$on('category', function (val) {
       this.type = 'category'
       this.category.name = val
+      this.title = _.capitalize(val)
     })
     this.$on('type', function (val) {
       this.type = val
+      this.title = _.capitalize(val)
     })
     this.$store.dispatch('loadBookmarks', this.$db.ref('bookmarks'))
   },
   methods: {
     addBookmark (data) {
-      extract.extractLink(data.link, data.category.name).then((data) => {
+      extract.extractLink(data.link, data.category).then((data) => {
         this.$db.ref('bookmarks').push(data)
         this.bookmark = false
         this.bookmarklink = { title: null, category: null, link: null }

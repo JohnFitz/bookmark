@@ -15,7 +15,7 @@
                 <v-icon class="yellow--text yellow--accent-4">grade</v-icon>
               </v-list-tile-action>
               <v-list-tile-action>
-                <v-chip small>{{ bookmark.category }}</v-chip>
+                <v-chip :style="{'background': bookmark.category.color, 'color': 'white', 'borderColor': bookmark.category.color}" small>{{ bookmark.category.name }}</v-chip>
               </v-list-tile-action>
               <v-list-tile-action>
                 <v-menu bottom left transition="v-slide-y-transition">
@@ -56,7 +56,7 @@ import _ from 'lodash'
 const filters = {
   all: bookmarks => bookmarks,
   favourites: bookmarks => bookmarks.filter(bookmark => bookmark.favourite),
-  category: (bookmarks, category) => bookmarks.filter(bookmark => bookmark.category === category)
+  category: (bookmarks, category) => bookmarks.filter(bookmark => bookmark.category.name === category)
 }
 
 export default {
