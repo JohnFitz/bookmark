@@ -30,7 +30,7 @@ npm run lint
 
 - [x] Offline
 - [x] Categories
-- [ ] Marking as Favourite
+- [x] Marking as Favourite
 - [ ] Rich Text Media for each link bookmarked
 - [ ] Export/Import
 

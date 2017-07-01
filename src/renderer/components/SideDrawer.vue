@@ -63,7 +63,7 @@
           </v-dialog>
         </v-flex>
       </v-layout>
-      <v-list-item v-for="category in $store.state.bookmark.categories" v-bind:key="category.name">
+      <v-list-item @click="setCategory(category.name)" v-for="category in $store.state.bookmark.categories" v-bind:key="category.name">
         <v-list-tile>
           <v-list-tile-action>
             <v-icon :style="{ color: category.color }">fiber_manual_record</v-icon>
@@ -104,6 +104,9 @@ export default {
     this.$store.dispatch('loadCategories', this.$db.ref('categories'))
   },
   methods: {
+    setCategory (name) {
+      this.$parent.$emit('category', name)
+    },
     setFeed (type) {
       this.$parent.$emit('type', type)
     },

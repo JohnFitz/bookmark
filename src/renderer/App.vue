@@ -7,7 +7,7 @@
     </v-toolbar>
     <main class="bg">
       <v-container fluid>
-        <bookmark-list :type="type"></bookmark-list>
+        <bookmark-list :type="type" :category="category.name"></bookmark-list>
       </v-container>
       <v-dialog v-model="bookmark" width="500">
         <v-btn floating class="secondary floatingbtn" slot="activator">
@@ -67,6 +67,10 @@ export default {
     }
   },
   created () {
+    this.$on('category', function (val) {
+      this.type = 'category'
+      this.category.name = val
+    })
     this.$on('type', function (val) {
       this.type = val
     })

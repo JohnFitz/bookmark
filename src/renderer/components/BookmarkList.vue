@@ -55,7 +55,8 @@ import _ from 'lodash'
 
 const filters = {
   all: bookmarks => bookmarks,
-  favourites: bookmarks => bookmarks.filter(bookmark => bookmark.favourite)
+  favourites: bookmarks => bookmarks.filter(bookmark => bookmark.favourite),
+  category: (bookmarks, category) => bookmarks.filter(bookmark => bookmark.category === category)
 }
 
 export default {
@@ -64,7 +65,7 @@ export default {
       type: String,
       default: 'all'
     },
-    query: {
+    category: {
       type: String,
       default: ''
     }
@@ -74,7 +75,10 @@ export default {
       return this.$store.state.bookmark.bookmarks
     },
     filteredBookmarks () {
-      return filters[this.type](this.bookmarks)
+      if (this.type !== 'category') {
+        return filters[this.type](this.bookmarks)
+      }
+      return filters[this.type](this.bookmarks, this.category)
     }
   },
   methods: {
