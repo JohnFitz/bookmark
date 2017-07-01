@@ -76,6 +76,9 @@ export default {
     })
     this.$on('type', function (val) {
       this.type = val
+      if (val === 'all') {
+        this.title = 'All bookmarks'
+      }
       this.title = _.capitalize(val)
     })
     this.$store.dispatch('loadBookmarks', this.$db.ref('bookmarks'))
