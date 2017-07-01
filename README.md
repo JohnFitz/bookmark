@@ -1,6 +1,6 @@
 # Bookmark
 
-> Bookmark is simple desktop application made using [Vue.js](https://vuejs.org), [Atom ELectron](https://electron.atom.io/) and [Firebase](https://firebase.google.com). 
+> Bookmark is simple desktop application example for organizing and storing bookmarked links in one place made using [Vue.js](https://vuejs.org), [Atom Electron](https://electron.atom.io/) and [Firebase](https://firebase.google.com). 
 
 (WIP) [Chrome extension](https://github.com/mrgodhani/bookmarkextension) to make bookmark links easier directly from browser coming soon.
 
