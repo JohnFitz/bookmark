@@ -11,6 +11,9 @@
               <v-list-tile-content>
                 <v-list-tile-title> {{ bookmark.title }} </v-list-tile-title>
               </v-list-tile-content>
+              <v-list-tile-action v-if="bookmark.favourite">
+                <v-icon class="yellow--text yellow--accent-4">grade</v-icon>
+              </v-list-tile-action>
               <v-list-tile-action>
                 <v-chip small>{{ bookmark.category }}</v-chip>
               </v-list-tile-action>
@@ -22,7 +25,8 @@
                   <v-list>
                     <v-list-item>
                       <v-list-tile @click.native="markFavourite(bookmark)">
-                        <v-list-tile-title>Mark as favourite</v-list-tile-title>
+                        <v-list-tile-title v-if="!bookmark.favourite">Mark as favourite</v-list-tile-title>
+                        <v-list-tile-title v-else>Mark as unfavourite</v-list-tile-title>
                       </v-list-tile>
                     </v-list-item>
                     <v-list-item>
@@ -55,7 +59,12 @@ export default {
       this.$db.ref('bookmarks').child(_.get(bookmark, '.key')).remove()
     },
     markFavourite (bookmark) {
-      this.$db.ref('favourites').push(bookmark)
+      const key = _.get(bookmark, '.key')
+      if (bookmark.favourite) {
+        this.$db.ref('bookmarks').child(key).update({favourite: false})
+      } else {
+        this.$db.ref('bookmarks').child(key).update({favourite: true})
+      }
     }
   }
 }

@@ -85,7 +85,6 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('loadFavourites', this.$db.ref('favourites'))
     this.$store.dispatch('loadBookmarks', this.$db.ref('bookmarks'))
   },
   methods: {
