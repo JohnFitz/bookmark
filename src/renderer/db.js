@@ -8,7 +8,7 @@ class Database {
       instance = this
     }
     this.config = {
-      databaseURL: '<YOUR_FIREBASE_DATABASE_URL>'
+      databaseURL: 'https://bookmark-adb57.firebaseio.com'
     }
     this.fire = firebase.initializeApp(this.config)
     this.db = this.fire.database()

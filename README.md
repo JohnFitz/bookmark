@@ -4,7 +4,7 @@
 
 (WIP) [Chrome extension](https://github.com/mrgodhani/bookmarkextension) to make bookmark links easier directly from browser coming soon.
 
-
+![img](screenshot.png)
 
 #### Build Setup
 
