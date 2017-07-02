@@ -10,7 +10,9 @@
 
 ``` bash
 
-# Set Environment Variable in either db.js file
+# Make sure in your firebase console under database you set rules for read and write to true
+
+# Set firebase database url in either src/renderer/db.js file
 
 # install dependencies
 npm install
