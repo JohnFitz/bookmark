@@ -10,8 +10,7 @@
 
 ``` bash
 
-# Set Environment Variable in either ~/.bashrc file or ~/.zshrc file
-export FIREBASE_DATABASE_URL=<your firebase databse url>
+# Set Environment Variable in either db.js file
 
 # install dependencies
 npm install
