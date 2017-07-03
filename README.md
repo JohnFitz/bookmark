@@ -31,7 +31,7 @@ npm run lint
 
 ### Features
 
-- [] Offline
+- [ ] Offline
 - [x] Categories
 - [x] Marking as Favourite
 - [ ] Rich Text Media for each link bookmarked
