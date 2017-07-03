@@ -3,7 +3,7 @@
     <v-flex xs12>
       <v-list two-line dense>
         <template v-for="bookmark in filteredBookmarks">
-          <v-list-item  style="background:white;">
+          <v-list-item  style="background:white;" @click="openLink(bookmark.url)">
             <v-list-tile avatar>
               <v-list-tile-avatar>
                 <img :src="bookmark.favicon">
@@ -82,6 +82,9 @@ export default {
     }
   },
   methods: {
+    openLink (url) {
+      this.$electron.shell.openExternal(url)
+    },
     deleteBookmark (bookmark) {
       this.$db.ref('bookmarks').child(_.get(bookmark, '.key')).remove()
     },

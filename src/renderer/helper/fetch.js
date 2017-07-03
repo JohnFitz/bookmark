@@ -23,7 +23,7 @@ export default {
             color: cat.color
           },
           favourite: false,
-          link: url
+          url: urlUtil.resolve(url)
         })
       })
     })
