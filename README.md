@@ -1,3 +1,7 @@
+#### Note
+
+This repository currently is not maintained.
+
 # Bookmark
 
 > Bookmark is simple desktop application example for organizing and storing bookmarked links in one place made using [Vue.js](https://vuejs.org), [Atom Electron](https://electron.atom.io/) and [Firebase](https://firebase.google.com). 
